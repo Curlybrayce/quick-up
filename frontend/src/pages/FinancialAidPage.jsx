@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { 
   DollarSign, 
   BookOpen, 
@@ -67,17 +68,28 @@ const FinancialAidPage = () => {
     e.preventDefault();
 
     try {
-        const response = await axios.post('/submit-financial-form', formData);
-        alert('Form submitted successfully!');
-        // Reset form
-        setFormData({ name: '', email: '', message: '' });
+        const response = await axios.post('http://localhost:5000/submit-financial-form', formData);
+        
+        // Reset form data
+        setFormData({
+          firstname: '',
+          lastname: '',
+          email: '',
+          phoneNumber: '',
+          edulevel: '',
+          school: '',
+          aidType: 'scholarship',
+          additionalDetails: ''
+        });
+  
+        // Show success alert
+        alert('Form submitted successfully!', response.message);
+        Navigate('/');
+        
       } catch (error) {
-        console.error('Submission error:', error);
-        alert('Failed to submit form');
+        // console.error('Submission error:', error);
+        alert('Failed to submit your Financial Aid Application');
       }
-    // Add financial aid application logic
-    console.log('Financial Aid Application:', formData);
-    alert('Your application has been submitted successfully!');
   };
 
   const unis = ["University of Abuja", "University of Agriculture, Abeokuta", "University of Ado-Ekiti", "University of Benin", "University of Calabar", "University of Education, Ikere-Ekiti", "University of Ibadan",

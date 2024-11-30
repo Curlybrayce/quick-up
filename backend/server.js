@@ -32,38 +32,59 @@ transporter.verify((error, success) => {
 // Form submission route
 app.post('/submit-financial-form', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { firstname, lastname, email, phoneNumber, edulevel, school, aidType, additionalDetails } = req.body;
 
-    // Validate input (basic example)
-    if (!name || !email || !message) {
-      return res.status(400).json({ message: 'All fields are required' });
+    // Validate input
+    if (!firstname || !lastname || !email || !phoneNumber || !edulevel) {
+      return res.status(400).json({ message: 'Required fields are missing' });
     }
 
     // Email configuration
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Sender address
-      to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER, // Recipient address
-      subject: 'New Financial Aid',
+      from: process.env.EMAIL_USER,
+      to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER,
+      subject: 'New Financial Aid Application',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2>Form Submission Details</h2>
-          <table>
+          <h2>Financial Aid Application Submission</h2>
+          <table style="width: 100%; border-collapse: collapse;">
             <tr>
-              <td><strong>Name:</strong></td>
-              <td>${name}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>First Name:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${firstname}</td>
             </tr>
             <tr>
-              <td><strong>Email:</strong></td>
-              <td>${email}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Last Name:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${lastname}</td>
             </tr>
             <tr>
-              <td><strong>Message:</strong></td>
-              <td>${message}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
             </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Phone Number:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${phoneNumber}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Education Level:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${edulevel}</td>
+            </tr>
+            ${school ? `
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>School:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${school}</td>
+            </tr>` : ''}
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Aid Type:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${aidType}</td>
+            </tr>
+            ${additionalDetails ? `
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Additional Details:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${additionalDetails}</td>
+            </tr>` : ''}
           </table>
         </div>
       `,
-      // Optional: Add reply-to address
       replyTo: email
     };
 
@@ -72,14 +93,14 @@ app.post('/submit-financial-form', async (req, res) => {
     console.log('Email sent:', info.response);
 
     res.status(200).json({ 
-      message: 'Form submitted successfully',
+      message: 'Financial aid application submitted successfully',
       messageId: info.messageId
     });
 
   } catch (error) {
     console.error('Email sending error:', error);
     res.status(500).json({ 
-      message: 'Failed to submit form', 
+      message: 'Failed to submit financial aid application', 
       error: error.message 
     });
   }
