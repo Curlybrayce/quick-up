@@ -6,6 +6,7 @@ import { User, Mail, Lock, Check } from 'lucide-react';
 const RegistrationPage = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -112,6 +113,134 @@ const RegistrationPage = () => {
     'Advanced Penetration Testing',
     'Web Application Security (OWASP Top 10)',
     'Security Operations and Incident Response',
+    'Cybersecurity for Cloud Computing',
+    'Cybersecurity for IoT Devices',
+    'Firewalls, VPNs, and IDS/IPS',
+    'Malware Analysis and Reverse Engineering',
+    'Risk Management and Cybersecurity Frameworks',
+    'Digital Forensics and Incident Response',
+    'Social Engineering and Phishing Attacks',
+    'Advanced Persistent Threats (APTs)',
+    'Wireless Network Security',
+    'Security in DevOps and CI/CD',
+    'Blockchain Security',
+    'Cyber Threat Intelligence',
+    'Ethical Hacking with Kali Linux',
+  
+    // Programming Languages
+  
+    // Python
+    'Python for Beginners',
+    'Advanced Python Programming',
+    'Python for Web Development (Flask, Django)',
+    'Python for Data Science',
+    'Python for Automation/Scripting',
+    'Machine Learning with Python',
+    'Deep Learning with Python',
+    'Python for Networking and Security',
+    'Python for Game Development',
+  
+    // JavaScript
+    'JavaScript Fundamentals',
+    'Advanced JavaScript (ES6 and beyond)',
+    'Asynchronous Programming in JavaScript',
+    'JavaScript for Backend Development (Node.js)',
+    'Building Full-Stack Applications with JavaScript',
+    'JavaScript Design Patterns',
+    'Testing JavaScript Applications',
+    'JavaScript Frameworks (React.js, Angular, Vue.js)',
+  
+    // Java
+    'Java for Beginners',
+    'Object-Oriented Programming with Java',
+    'Java for Android Development',
+    'Advanced Java Concepts (Streams, Lambdas, etc.)',
+    'Java and Spring Boot for Backend Development',
+    'Concurrency and Multithreading in Java',
+  
+    // C/C++
+    'C Programming for Beginners',
+    'Advanced C Programming',
+    'C++ for Beginners',
+    'Data Structures and Algorithms in C/C++',
+    'Systems Programming in C',
+    'C++ Design Patterns',
+    'Low-Level Programming with C',
+  
+    // Ruby
+    'Ruby for Beginners',
+    'Building Web Apps with Ruby on Rails',
+    'Ruby for Test-Driven Development (TDD)',
+    'Ruby and Database Management',
+  
+    // Go (Golang)
+    'Go Programming for Beginners',
+    'Concurrency in Go',
+    'Building Web Applications with Go',
+    'Go for Microservices',
+    'Advanced Go Techniques',
+  
+    // Algorithms & Data Structures
+    'Introduction to Algorithms',
+    'Sorting Algorithms (Merge Sort, Quick Sort, etc.)',
+    'Searching Algorithms (Binary Search, DFS/BFS)',
+    'Dynamic Programming',
+    'Graph Algorithms (Dijkstra, A*)',
+    'Data Structures: Arrays, Stacks, Queues',
+    'Trees and Binary Search Trees',
+    'Heaps and Priority Queues',
+    'Hashing Techniques',
+    'Advanced Data Structures (Trie, Segment Trees, etc.)',
+    'String Matching and Parsing Algorithms',
+    'Greedy Algorithms',
+    'Divide and Conquer Algorithms',
+    'Network Flow Algorithms',
+    'Computational Geometry Algorithms',
+    'Parallel Algorithms',
+    'Algorithms for Big Data',
+    'Approximation Algorithms',
+  
+    // Cloud Computing & DevOps
+    'Introduction to Cloud Computing',
+    'AWS Fundamentals',
+    'Azure Fundamentals',
+    'Google Cloud Platform (GCP) Basics',
+    'Cloud Architecture and Design',
+    'Cloud Security Best Practices',
+    'DevOps Basics',
+    'Continuous Integration/Continuous Deployment (CI/CD)',
+    'Docker and Containerization',
+    'Kubernetes for Orchestration',
+    'Infrastructure as Code (Terraform, CloudFormation)',
+    'Microservices and Cloud-Native Development',
+    'Serverless Computing with AWS Lambda',
+    'Monitoring and Logging in Cloud Environments',
+    'Building Scalable Applications on the Cloud',
+  
+    // Artificial Intelligence & Robotics
+    'Introduction to AI',
+    'AI for Problem Solving',
+    'Robotics and Autonomous Systems',
+    'AI in Robotics',
+    'Computer Vision for AI',
+    'Speech Recognition AI',
+    'AI for Game Development',
+    'Building Chatbots with AI',
+    'Ethical AI and Bias Mitigation',
+    'AI for Healthcare',
+    'Swarm Robotics',
+  
+    // Blockchain & Cryptocurrencies
+    'Blockchain Basics',
+    'Ethereum and Smart Contracts',
+    'Building Decentralized Apps (DApps)',
+    'Cryptography in Blockchain',
+    'Blockchain Security',
+    'Bitcoin and Cryptocurrency Fundamentals',
+    'NFTs (Non-Fungible Tokens)',
+    'Developing Smart Contracts with Solidity',
+    'Blockchain Development with Hyperledger',
+    'Blockchain for Finance and Supply Chain'
   ];
   
 
