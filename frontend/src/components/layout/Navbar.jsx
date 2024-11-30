@@ -55,7 +55,7 @@ const Navbar = () => {
           hover:text-indigo-600 transition-colors"
         >
           <img 
-            src="/api/placeholder/50/50" 
+            src="/logo.png" 
             alt="Tutourly Tech Logo" 
             className="w-10 h-10 mr-3 rounded-full"
           />
