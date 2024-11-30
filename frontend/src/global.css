@@ -1,0 +1,79 @@
+/* Global CSS for Tech Tutorial Class */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Global Reset and Base Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Custom Hover Effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Additional Tailwind Configuration */
+@layer utilities {
+  .bg-gradient-custom {
+    background: linear-gradient(135deg, #f6f8f9 0%, #e5ebee 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Responsive Typography */
+/* @responsive {
+  .responsive-text {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+} */
+
+/* Form Styling Enhancements */
+.custom-input {
+  @apply w-full px-4 py-3 border-2 border-gray-300 rounded-lg 
+         focus:outline-none focus:border-indigo-500 
+         transition duration-300 ease-in-out;
+}
+
+.custom-button {
+  @apply w-full px-6 py-3 rounded-lg 
+         bg-indigo-600 text-white 
+         hover:bg-indigo-700 
+         focus:outline-none focus:ring-2 focus:ring-indigo-500 
+         transition duration-300 transform hover:scale-105;
+}
+
+/* Card Styling */
+.card-design {
+  @apply bg-white rounded-xl shadow-lg 
+         hover:shadow-xl transition duration-300 
+         transform hover:-translate-y-2;
+}
