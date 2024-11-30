@@ -106,6 +106,62 @@ app.post('/submit-financial-form', async (req, res) => {
   }
 });
 
+app.post('/register', async (req, res) => {
+  try {
+    const { name, email, password, interests } = req.body;
+
+    // Basic validation
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'Please fill in all required fields' });
+    }
+
+    // Email configuration
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.RECIPIENT_EMAIL || process.env.EMAIL_USER,
+      subject: 'New User Registration',
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2>New User Registration</h2>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Name:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Email:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
+            </tr>
+            ${interests && interests.length > 0 ? `
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ddd;"><strong>Interests:</strong></td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${interests.join(', ')}</td>
+            </tr>` : ''}
+          </table>
+          <p><em>Note: For security reasons, password is not displayed in this email.</em></p>
+        </div>
+      `,
+      replyTo: email
+    };
+
+    // Send email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Registration email sent:', info.response);
+
+    res.status(200).json({ 
+      message: 'Registration successful',
+      messageId: info.messageId
+    });
+
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ 
+      message: 'Registration failed', 
+      error: error.message 
+    });
+  }
+});
+
 // Basic error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);

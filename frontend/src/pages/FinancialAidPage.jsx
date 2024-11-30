@@ -68,7 +68,7 @@ const FinancialAidPage = () => {
     e.preventDefault();
 
     try {
-        const response = await axios.post('http://localhost:5000/submit-financial-form', formData);
+        const response = await axios.post('https://quick-up.onrender.com/submit-financial-form', formData);
         
         // Reset form data
         setFormData({
