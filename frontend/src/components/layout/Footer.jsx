@@ -110,15 +110,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center text-gray-400">
                 <Mail className="mr-3 w-5 h-5 text-indigo-500" />
-                support@techtutorial.com
+                tutourly24@gmail.com
               </li>
               <li className="flex items-center text-gray-400">
                 <Phone className="mr-3 w-5 h-5 text-indigo-500" />
-                +1 (555) 123-4567
+                +234 (816) 496-9155
               </li>
               <li className="flex items-center text-gray-400">
                 <MapPin className="mr-3 w-5 h-5 text-indigo-500" />
-                123 Tech Learning St, Innovation City
+                123 Tech Learning St, Innovation City(Nigeria)
               </li>
             </ul>
           </div>
@@ -130,7 +130,7 @@ const Footer = () => {
             © {currentYear} Tech Tutorial Class. All Rights Reserved.
           </p>
           <p className="text-sm text-gray-500 mt-2">
-            Transforming Tech Education, One Student at a Time
+            Transforming Tech Education, Transforming Lives through Innovation
           </p>
         </div>
       </div>
