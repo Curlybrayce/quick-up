@@ -27,7 +27,7 @@ const HomePage = () => {
             hover:bg-indigo-700 transition transform hover:scale-105 
             flex items-center gap-2 shadow-lg"
           >
-            <Users /> Register Now
+            <Users /> Register
           </Link>
           <Link 
             to="/courses" 

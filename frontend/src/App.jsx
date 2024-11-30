@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage';
 import './global.css';
 import FinancialAidPage from './pages/FinancialAidPage';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
 function App() {
   return (
@@ -17,35 +18,42 @@ function App() {
           <>
           <Navbar />
           <HomePage />
+          <Footer />
           </>
         } />
         <Route path="/register" element={
           <>
             <Navbar />
-            <RegistrationPage />          
+            <RegistrationPage /> 
+            <Footer />
           </>
         } />
         <Route path="/about" element={
           <>
+            <Navbar />
             <AboutPage />
+            <Footer />
           </>
         } />
         <Route path="/courses" element={
           <>
           <Navbar />
           <AllProCoursesPage />
+          <Footer />
         </>
         } />
         <Route path="/all-pro-courses" element={
           <>
           <Navbar />
           <CoursesPage />
+          <Footer />
         </>
         } />
         <Route path="/financial-aid" element={
           <>
           <Navbar />
           <FinancialAidPage />
+          <Footer />
         </>
         } />
       </Routes>
