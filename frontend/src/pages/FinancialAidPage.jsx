@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 
 const FinancialAidPage = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [activeSection, setActiveSection] = useState('overview');
 
   const financialAidOptions = [
@@ -66,12 +68,13 @@ const FinancialAidPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
+    
     try {
-        const response = await axios.post('https://quick-up.onrender.com/submit-financial-form', formData);
-        
-        // Reset form data
-        setFormData({
+      const response = await axios.post('https://quick-up.onrender.com/submit-financial-form', formData);
+      
+      // Reset form data
+      setFormData({
           firstname: '',
           lastname: '',
           email: '',
@@ -81,6 +84,7 @@ const FinancialAidPage = () => {
           aidType: 'scholarship',
           additionalDetails: ''
         });
+        setIsSubmitted(true);
   
         // Show success alert
         alert('Form submitted successfully!', response.message);
@@ -89,6 +93,8 @@ const FinancialAidPage = () => {
       } catch (error) {
         // console.error('Submission error:', error);
         alert('Failed to submit your Financial Aid Application');
+      }finally{
+        setIsSubmitting(false)
       }
   };
 
@@ -128,6 +134,19 @@ const FinancialAidPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100">
+      {/* {isSubmitted && (
+          <div className="bg-green-50 p-8 rounded-xl text-center max-w-xl mx-auto">
+            <Award className="w-24 h-24 mx-auto text-green-600 mb-6" />
+            <h2 className="text-3xl font-bold text-green-800 mb-4">
+              Application Received!
+            </h2>
+            <p className="text-green-700 mb-4">
+              Your financial aid application has been submitted successfully. 
+              We'll review your application and contact you within 5-7 business days.
+            </p>
+          </div>
+        )
+      } */}
       <div className="container mx-auto px-4 py-16">
         <header className="text-center mb-16">
           <DollarSign className="mx-auto w-16 h-16 text-indigo-700 mb-6" />
@@ -163,7 +182,7 @@ const FinancialAidPage = () => {
           ))}
         </section>
 
-        <section className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <section className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-8 w-full">
           <h2 className="text-3xl font-bold text-center text-indigo-800 mb-8">
             Financial Aid Application
           </h2>
@@ -296,6 +315,7 @@ const FinancialAidPage = () => {
               type="submit" 
               className="w-full bg-indigo-600 text-white py-3 rounded-lg 
               hover:bg-indigo-700 transition transform hover:scale-105"
+              disabled={isSubmitting}
             >
               Submit Financial Aid Application
             </button>

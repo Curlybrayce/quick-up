@@ -9,6 +9,7 @@ import './global.css';
 import FinancialAidPage from './pages/FinancialAidPage';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import EnrollmentForm from './pages/EnrollmentForm';
 
 function App() {
   return (
@@ -25,6 +26,13 @@ function App() {
           <>
             <Navbar />
             <RegistrationPage /> 
+            <Footer />
+          </>
+        } />
+        <Route path="/enroll" element={
+          <>
+            <Navbar />
+            <EnrollmentForm /> 
             <Footer />
           </>
         } />
