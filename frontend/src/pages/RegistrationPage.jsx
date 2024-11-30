@@ -5,6 +5,7 @@ import { User, Mail, Lock, Check } from 'lucide-react';
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
