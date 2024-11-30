@@ -29,11 +29,11 @@ const Navbar = () => {
       path: '/about', 
       icon: <Info className="w-5 h-5 mr-2" /> 
     },
-    { 
-      name: 'Financial Aid', 
-      path: '/financial-aid', 
-      icon: <DollarSign className="w-5 h-5 mr-2" /> 
-    },
+    // { 
+    //   name: 'Financial Aid', 
+    //   path: '/financial-aid', 
+    //   icon: <DollarSign className="w-5 h-5 mr-2" /> 
+    // },
     { 
       name: 'Register', 
       path: '/register', 
