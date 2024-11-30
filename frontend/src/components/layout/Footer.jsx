@@ -22,11 +22,11 @@ const Footer = () => {
   ];
 
   const supportLinks = [
-    { name: 'Contact Support', path: '/support' },
-    { name: 'FAQ', path: '/faq' },
-    { name: 'Help Center', path: '/help' },
-    { name: 'Privacy Policy', path: '/privacy' },
-    { name: 'Terms of Service', path: '/terms' }
+    { name: 'Support', path: '/about' },
+    // { name: 'FAQ', path: '/faq' }
+    // { name: 'Help Center', path: '/help' },
+    // { name: 'Privacy Policy', path: '/privacy' },
+    // { name: 'Terms of Service', path: '/terms' }
   ];
 
   return (
