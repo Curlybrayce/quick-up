@@ -37,7 +37,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div>
             <h2 className="text-2xl font-bold mb-4 text-indigo-400">
-              Tutourly Tech Class
+              Tutourly Tech
             </h2>
             <p className="text-gray-400 mb-6">
               Empowering tech professionals through comprehensive, innovative learning experiences.
