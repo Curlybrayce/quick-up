@@ -37,7 +37,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div>
             <h2 className="text-2xl font-bold mb-4 text-indigo-400">
-              Tech Tutorial Class
+              Tutourly Tech Class
             </h2>
             <p className="text-gray-400 mb-6">
               Empowering tech professionals through comprehensive, innovative learning experiences.
@@ -127,7 +127,7 @@ const Footer = () => {
         {/* Copyright and Additional Info */}
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-gray-400">
-            © {currentYear} Tech Tutorial Class. All Rights Reserved.
+            © {currentYear} Tutourly Tech Class. All Rights Reserved.
           </p>
           <p className="text-sm text-gray-500 mt-2">
             Transforming Tech Education, Transforming Lives through Innovation

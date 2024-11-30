@@ -14,7 +14,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <header className="container mx-auto px-4 py-16 text-center">
         <h1 className="text-5xl font-bold text-indigo-800 mb-6">
-          Tech Tutorial Class
+          Tutourly Tech Class
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
           Empowering Tech Enthusiasts through Comprehensive Programming Courses

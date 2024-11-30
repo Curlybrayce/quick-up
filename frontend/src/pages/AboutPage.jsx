@@ -14,7 +14,7 @@ const AboutPage = () => {
       <div className="container mx-auto px-4 py-16">
         <header className="text-center mb-16">
           <h1 className="text-5xl font-bold text-teal-800 mb-6">
-            About Tech Tutorial Class
+            About Tutourly Tech Class
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Transforming Tech Education through Innovative, Practical Learning Experiences
@@ -58,7 +58,7 @@ const AboutPage = () => {
         
         <section className="mt-16 max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-teal-800 mb-12">
-            Why Choose Tech Tutorial Class?
+            Why Choose Tutourly Tech Class?
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">

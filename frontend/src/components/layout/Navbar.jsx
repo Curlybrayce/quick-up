@@ -56,10 +56,10 @@ const Navbar = () => {
         >
           <img 
             src="/api/placeholder/50/50" 
-            alt="Tech Tutorial Logo" 
+            alt="Tutourly Tech Logo" 
             className="w-10 h-10 mr-3 rounded-full"
           />
-          Tech Tutorial
+          Tutourly Tech
         </Link>
 
         {/* Desktop Navigation */}

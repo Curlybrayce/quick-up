@@ -330,7 +330,7 @@ const RegistrationPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 flex items-center justify-center p-4">
       <div className="bg-white w-full max-w-md rounded-xl shadow-2xl p-8">
         <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">
-          Join Tech Tutorial Class
+          Join Tutourly Tech Class
         </h2>
         
         <form onSubmit={handleSubmit} className="space-y-6">
