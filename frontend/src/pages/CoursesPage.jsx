@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import { 
   Code, 
   Book, 
@@ -17,129 +17,128 @@ import {
 const courseCategories = [
   {
     category: 'Programming Fundamentals',
-courses: [
-  {
-    id: 1,
-    title: 'Web Development Basics',
-    shortDescription: 'Learn HTML, CSS, and JavaScript from scratch',
-    price: 19.99,
-    duration: '4 weeks',
-    icon: <Code className="w-12 h-12 text-blue-600" />,
-    curriculum: [
-      'HTML5 fundamentals',
-      'CSS styling techniques',
-      'JavaScript basics',
-      'Simple web page creation',
-      'Responsive design principles'
+    courses: [
+      {
+        id: 1,
+        title: 'Web Development Basics',
+        shortDescription: 'Learn HTML, CSS, and JavaScript from scratch',
+        price: 19.99,
+        duration: '4 weeks',
+        icon: <Code className="w-12 h-12 text-blue-600" />,
+        curriculum: [
+          'HTML5 fundamentals',
+          'CSS styling techniques',
+          'JavaScript basics',
+          'Simple web page creation',
+          'Responsive design principles'
+        ]
+      },
+      {
+        id: 2,
+        title: 'Python Programming for Beginners',
+        shortDescription: 'Master Python programming from ground zero',
+        price: 24.99,
+        duration: '6 weeks',
+        icon: <Cpu className="w-12 h-12 text-green-600" />,
+        curriculum: [
+          'Python syntax and structure',
+          'Data types and variables',
+          'Control structures',
+          'Functions and modules',
+          'Basic data manipulation'
+        ]
+      },
+      {
+        id: 3,
+        title: 'Introduction to Java',
+        shortDescription: 'Start your journey into Java programming',
+        price: 29.99,
+        duration: '6 weeks',
+        icon: <Coffee className="w-12 h-12 text-orange-500" />,
+        curriculum: [
+          'Setting up the Java environment',
+          'Understanding object-oriented programming',
+          'Java syntax and basics',
+          'Working with classes and objects',
+          'Simple application development'
+        ]
+      },
+      {
+        id: 4,
+        title: 'C++ Essentials',
+        shortDescription: 'Get a solid foundation in C++ programming',
+        price: 21.99,
+        duration: '5 weeks',
+        icon: <Database className="w-12 h-12 text-purple-600" />,
+        curriculum: [
+          'Introduction to C++ and IDE setup',
+          'Basic syntax and variables',
+          'Control flow and loops',
+          'Pointers and memory management',
+          'Simple problem-solving techniques'
+        ]
+      },
+      {
+        id: 5,
+        title: 'Introduction to Algorithms',
+        shortDescription: 'Learn the fundamental algorithms for programming',
+        price: 34.99,
+        duration: '7 weeks',
+        icon: <Star className="w-12 h-12 text-yellow-600" />,
+        curriculum: [
+          'Understanding algorithms and complexity',
+          'Sorting and searching algorithms',
+          'Greedy algorithms',
+          'Divide-and-conquer techniques',
+          'Introduction to dynamic programming'
+        ]
+      },
+      {
+        id: 6,
+        title: 'Database Basics',
+        shortDescription: 'Understand relational databases and SQL',
+        price: 22.99,
+        duration: '4 weeks',
+        icon: <Server className="w-12 h-12 text-red-500" />,
+        curriculum: [
+          'Introduction to databases',
+          'Relational database concepts',
+          'SQL queries and commands',
+          'Database design principles',
+          'Connecting applications to databases'
+        ]
+      },
+      {
+        id: 7,
+        title: 'Introduction to Data Structures',
+        shortDescription: 'Master essential data structures for programming',
+        price: 27.99,
+        duration: '5 weeks',
+        icon: <Star className="w-12 h-12 text-teal-500" />,
+        curriculum: [
+          'Arrays and linked lists',
+          'Stacks and queues',
+          'Trees and graphs',
+          'Hashing and hash tables',
+          'Practical implementation in code'
+        ]
+      },
+      {
+        id: 8,
+        title: 'Fundamentals of Mobile App Development',
+        shortDescription: 'Dive into mobile app development with Flutter',
+        price: 39.99,
+        duration: '8 weeks',
+        icon: <Star className="w-12 h-12 text-indigo-500" />,
+        curriculum: [
+          'Introduction to mobile app development',
+          'Dart programming language basics',
+          'Building user interfaces with Flutter',
+          'State management in Flutter',
+          'Deploying your first mobile app'
+        ]
+      }
     ]
-  },
-  {
-    id: 2,
-    title: 'Python Programming for Beginners',
-    shortDescription: 'Master Python programming from ground zero',
-    price: 24.99,
-    duration: '6 weeks',
-    icon: <Cpu className="w-12 h-12 text-green-600" />,
-    curriculum: [
-      'Python syntax and structure',
-      'Data types and variables',
-      'Control structures',
-      'Functions and modules',
-      'Basic data manipulation'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Introduction to Java',
-    shortDescription: 'Start your journey into Java programming',
-    price: 29.99,
-    duration: '6 weeks',
-    icon: <Coffee className="w-12 h-12 text-orange-500" />,
-    curriculum: [
-      'Setting up the Java environment',
-      'Understanding object-oriented programming',
-      'Java syntax and basics',
-      'Working with classes and objects',
-      'Simple application development'
-    ]
-  },
-  {
-    id: 4,
-    title: 'C++ Essentials',
-    shortDescription: 'Get a solid foundation in C++ programming',
-    price: 21.99,
-    duration: '5 weeks',
-    icon: <Database className="w-12 h-12 text-purple-600" />,
-    curriculum: [
-      'Introduction to C++ and IDE setup',
-      'Basic syntax and variables',
-      'Control flow and loops',
-      'Pointers and memory management',
-      'Simple problem-solving techniques'
-    ]
-  },
-  {
-    id: 5,
-    title: 'Introduction to Algorithms',
-    shortDescription: 'Learn the fundamental algorithms for programming',
-    price: 34.99,
-    duration: '7 weeks',
-    icon: <Star className="w-12 h-12 text-yellow-600" />,
-    curriculum: [
-      'Understanding algorithms and complexity',
-      'Sorting and searching algorithms',
-      'Greedy algorithms',
-      'Divide-and-conquer techniques',
-      'Introduction to dynamic programming'
-    ]
-  },
-  {
-    id: 6,
-    title: 'Database Basics',
-    shortDescription: 'Understand relational databases and SQL',
-    price: 22.99,
-    duration: '4 weeks',
-    icon: <Server className="w-12 h-12 text-red-500" />,
-    curriculum: [
-      'Introduction to databases',
-      'Relational database concepts',
-      'SQL queries and commands',
-      'Database design principles',
-      'Connecting applications to databases'
-    ]
-  },
-  {
-    id: 7,
-    title: 'Introduction to Data Structures',
-    shortDescription: 'Master essential data structures for programming',
-    price: 27.99,
-    duration: '5 weeks',
-    icon: <Star className="w-12 h-12 text-teal-500" />,
-    curriculum: [
-      'Arrays and linked lists',
-      'Stacks and queues',
-      'Trees and graphs',
-      'Hashing and hash tables',
-      'Practical implementation in code'
-    ]
-  },
-  {
-    id: 8,
-    title: 'Fundamentals of Mobile App Development',
-    shortDescription: 'Dive into mobile app development with Flutter',
-    price: 39.99,
-    duration: '8 weeks',
-    icon: <Star className="w-12 h-12 text-indigo-500" />,
-    curriculum: [
-      'Introduction to mobile app development',
-      'Dart programming language basics',
-      'Building user interfaces with Flutter',
-      'State management in Flutter',
-      'Deploying your first mobile app'
-    ]
-  }
-]
-
   },
   {
     category: 'Advanced Programming',
@@ -250,6 +249,13 @@ courses: [
 
 const AllProCoursesPage = () => {
   const [activeCategory, setActiveCategory] = useState('Programming Fundamentals');
+  const navigate = useNavigate();
+
+  const handleEnrollClick = (courseName, coursePrice) => {    
+    navigate('/enroll', {
+      state: { courseName, coursePrice },
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
@@ -288,63 +294,62 @@ const AllProCoursesPage = () => {
           {courseCategories
             .find(cat => cat.category === activeCategory)
             .courses.map((course) => (
-              <div 
-                key={course.id} 
-                className="bg-white rounded-xl shadow-lg overflow-hidden 
-                transform transition-all duration-300 hover:-translate-y-2 
-                hover:shadow-2xl"
-              >
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    {course.icon}
-                    <h3 className="text-2xl font-bold ml-4 text-gray-800">
-                      {course.title}
-                    </h3>
-                  </div>
+              <div
+          key={course.id}
+          className="bg-white rounded-xl shadow-lg overflow-hidden 
+                     transform transition-all duration-300 hover:-translate-y-2 
+                     hover:shadow-2xl"
+        >
+          <div className="p-6">
+            <div className="flex items-center mb-4">
+              {course.icon}
+              <h3 className="text-2xl font-bold ml-4 text-gray-800">
+                {course.title}
+              </h3>
+            </div>
 
-                  <p className="text-gray-600 mb-4">
-                    {course.shortDescription}
-                  </p>
+            <p className="text-gray-600 mb-4">{course.shortDescription}</p>
 
-                  <div className="mb-4">
-                    <div className="flex items-center text-sm text-gray-600 mb-2">
-                      <Star className="w-4 h-4 mr-2 text-yellow-500" />
-                      Duration: {course.duration}
-                    </div>
-                  </div>
-
-                  <div className="mb-4">
-                    <h4 className="font-semibold text-gray-700 mb-2">
-                      What You'll Learn:
-                    </h4>
-                    {course.curriculum.map((item) => (
-                      <div 
-                        key={item} 
-                        className="flex items-center text-sm text-gray-600 mb-1"
-                      >
-                        <Star className="w-4 h-4 mr-2 text-green-500" />
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex justify-between items-center mt-6">
-                    <span className="text-3xl font-bold text-green-600">
-                      ${course.price}
-                    </span>
-                    <button 
-                      className="bg-indigo-600 text-white 
-                      px-6 py-3 rounded-lg 
-                      hover:bg-indigo-700 
-                      transition-colors 
-                      flex items-center gap-2"
-                    >
-                      <Book className="w-5 h-5" />
-                      Enroll Now
-                    </button>
-                  </div>
-                </div>
+            <div className="mb-4">
+              <div className="flex items-center text-sm text-gray-600 mb-2">
+                <Star className="w-4 h-4 mr-2 text-yellow-500" />
+                Duration: {course.duration}
               </div>
+            </div>
+
+            <div className="mb-4">
+              <h4 className="font-semibold text-gray-700 mb-2">
+                What You'll Learn:
+              </h4>
+              {course.curriculum.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center text-sm text-gray-600 mb-1"
+                >
+                  <Star className="w-4 h-4 mr-2 text-green-500" />
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-between items-center mt-6">
+              <span className="text-3xl font-bold text-green-600">
+                ${course.price}
+              </span>
+              <button
+                className="bg-indigo-600 text-white 
+                           px-6 py-3 rounded-lg 
+                           hover:bg-indigo-700 
+                           transition-colors 
+                           flex items-center gap-2"
+                onClick={() => handleEnrollClick(course.title, course.price)}
+              >
+                <Book className="w-5 h-5" />
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
             ))}
         </div>
 

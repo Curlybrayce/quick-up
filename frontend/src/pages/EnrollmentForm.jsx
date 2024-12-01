@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   User, 
   Mail, 
@@ -9,26 +10,38 @@ import {
   Check 
 } from 'lucide-react';
 
-const EnrollmentForm = ({ courseName, coursePrice }) => {
+const EnrollmentForm = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { courseName, coursePrice } = location.state || {};
+
+  useEffect(() => {
+    // Check if courseName is empty or undefined
+    if (!courseName) {
+      navigate('/'); // Redirect to home or another page
+    }
+  }, [courseName, navigate]);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
+    courseName,
     country: '',
     paymentMethod: '',
-    promoCode: ''
+    promoCode: '',
+    total: ''
   });
 
   const [discount, setDiscount] = useState(0);
   const [isEnrolled, setIsEnrolled] = useState(false);
 
   const countries = [
-    'United States', 'Canada', 'United Kingdom', 'India', 
+    'United States', 'Canada', 'United Kingdom', 'Ghana', 
     'Australia', 'Germany', 'Nigeria', 'Brazil', 'Other'
   ];
 
   const paymentMethods = [
-    'Credit Card', 'PayPal', 'Bank Transfer', 'Student Installment Plan'
+    'Bank Transfer', 'Student Installment Plan'
   ];
 
   const promoCodeHandler = () => {
@@ -52,7 +65,9 @@ const EnrollmentForm = ({ courseName, coursePrice }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    formData.total = calculateTotal();
     // Enrollment logic would go here
+    console.log(formData)
     setIsEnrolled(true);
   };
 
@@ -74,145 +89,147 @@ const EnrollmentForm = ({ courseName, coursePrice }) => {
           Check your email for further instructions.
         </p>
         <p className="font-semibold text-green-600">
-          Total Paid: ${calculateTotal().toFixed(2)}
+          Total Paid: ${calculateTotal()}
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white shadow-2xl rounded-xl p-8 max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold text-indigo-800 mb-6 text-center">
-        Enroll in {courseName}
-      </h2>
+    <div className="bg-white shadow-2xl rounded-xl p-8 max-w-2xl mx-auto my-10">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-indigo-800 mb-6 text-center">
+          Enroll in {courseName}
+        </h2>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
-            <input 
-              type="text" 
-              name="fullName"
-              placeholder="Full Name"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
-              required
-            />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+              <input 
+                type="text" 
+                name="fullName"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
+                required
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="relative">
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+              <input 
+                type="tel" 
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+              <select
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
+                required
+              >
+                <option value="">Select Country</option>
+                {countries.map(country => (
+                  <option key={country} value={country}>{country}</option>
+                ))}
+              </select>
+            </div>
           </div>
 
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
-            <input 
-              type="email" 
-              name="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="relative">
-            <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
-            <input 
-              type="tel" 
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
-              required
-            />
-          </div>
-
-          <div className="relative">
-            <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
+            <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
             <select
-              name="country"
-              value={formData.country}
+              name="paymentMethod"
+              value={formData.paymentMethod}
               onChange={handleInputChange}
               className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
               required
             >
-              <option value="">Select Country</option>
-              {countries.map(country => (
-                <option key={country} value={country}>{country}</option>
+              <option value="">Select Payment Method</option>
+              {paymentMethods.map(method => (
+                <option key={method} value={method}>{method}</option>
               ))}
             </select>
           </div>
-        </div>
 
-        <div className="relative">
-          <CreditCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-500" />
-          <select
-            name="paymentMethod"
-            value={formData.paymentMethod}
-            onChange={handleInputChange}
-            className="w-full pl-10 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
-            required
-          >
-            <option value="">Select Payment Method</option>
-            {paymentMethods.map(method => (
-              <option key={method} value={method}>{method}</option>
-            ))}
-          </select>
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <input 
-            type="text" 
-            name="promoCode"
-            placeholder="Promo Code (Optional)"
-            value={formData.promoCode}
-            onChange={handleInputChange}
-            className="flex-grow pl-4 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
-          />
-          <button 
-            type="button"
-            onClick={promoCodeHandler}
-            className="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600"
-          >
-            Apply
-          </button>
-        </div>
-
-        {discount > 0 && (
-          <div className="bg-green-50 p-4 rounded-lg">
-            <p className="text-green-700">
-              Promo Code Applied: {(discount * 100).toFixed(0)}% Discount
-            </p>
+          <div className="flex items-center space-x-4">
+            <input 
+              type="text" 
+              name="promoCode"
+              placeholder="Promo Code (Optional)"
+              value={formData.promoCode}
+              onChange={handleInputChange}
+              className="flex-grow pl-4 pr-4 py-3 border-2 border-indigo-200 rounded-lg"
+            />
+            <button 
+              type="button"
+              onClick={promoCodeHandler}
+              className="bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600"
+            >
+              Apply
+            </button>
           </div>
-        )}
 
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <div className="flex justify-between mb-2">
-            <span>Course Price:</span>
-            <span>${coursePrice.toFixed(2)}</span>
-          </div>
           {discount > 0 && (
-            <div className="flex justify-between mb-2 text-green-600">
-              <span>Discount ({(discount * 100).toFixed(0)}%):</span>
-              <span>-${(coursePrice * discount).toFixed(2)}</span>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <p className="text-green-700">
+                Promo Code Applied: {(discount * 100)}% Discount
+              </p>
             </div>
           )}
-          <div className="flex justify-between font-bold border-t pt-2">
-            <span>Total:</span>
-            <span>${calculateTotal().toFixed(2)}</span>
-          </div>
-        </div>
 
-        <button 
-          type="submit" 
-          className="w-full bg-indigo-600 text-white py-4 rounded-lg 
-          hover:bg-indigo-700 transition transform hover:scale-105"
-        >
-          Complete Enrollment
-        </button>
-      </form>
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="flex justify-between mb-2">
+              <span>Course Price:</span>
+              <span>${coursePrice}</span>
+            </div>
+            {discount > 0 && (
+              <div className="flex justify-between mb-2 text-green-600">
+                <span>Discount ({(discount * 100)}%):</span>
+                <span>-${(coursePrice * discount)}</span>
+              </div>
+            )}
+            <div className="flex justify-between font-bold border-t pt-2">
+              <span>Total:</span>
+              <span>${calculateTotal()}</span>
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            className="w-full bg-indigo-600 text-white py-4 rounded-lg 
+            hover:bg-indigo-700 transition transform hover:scale-105"
+          >
+            Complete Enrollment
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
