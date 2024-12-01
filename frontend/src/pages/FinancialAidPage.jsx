@@ -71,7 +71,7 @@ const FinancialAidPage = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('https://quick-up.onrender.com/submit-financial-form', formData);
+      const response = await axios.post('https://tutourly.onrender.com/submit-financial-form', formData);
       
       // Reset form data
       setFormData({

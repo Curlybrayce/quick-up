@@ -298,7 +298,7 @@ const RegistrationPage = () => {
 
     try {
       // Send registration data to server
-      const response = await axios.post('https://quick-up.onrender.com/register', formData);
+      const response = await axios.post('https://tutourly.onrender.com/register', formData);
 
       // Reset form data
       setFormData({
