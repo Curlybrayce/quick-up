@@ -8,7 +8,7 @@ app.use(cors());
 
 // If you want to restrict CORS to specific origins:
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow only the frontend origin
+    origin: 'https:tutourly.verce.app', // Allow only the frontend origin
     methods: 'GET,POST', // Allow only specific HTTP methods
     allowedHeaders: 'Content-Type', // Allow only specific headers
 }));
