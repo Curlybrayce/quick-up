@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Code, 
-  BookOpen, 
-  Users, 
-  Terminal, 
-  Star, 
-  CheckCircle 
+import {
+  Code,
+  BookOpen,
+  Users,
+  Terminal,
+  Star,
+  CheckCircle
 } from 'lucide-react';
 
 const HomePage = () => {
@@ -19,34 +19,37 @@ const HomePage = () => {
         <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
           Empowering Tech Enthusiasts through Comprehensive Programming Courses
         </p>
-        
-        <div className="flex justify-center space-x-4 mb-16">
-          <Link 
-            to="/register" 
+
+        <div className="flex flex-col items-center space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0 mb-16">
+          <Link
+            to="/register"
             className="bg-indigo-600 text-white px-6 py-3 rounded-lg 
-            hover:bg-indigo-700 transition transform hover:scale-105 
-            flex items-center gap-2 shadow-lg"
+      hover:bg-indigo-700 transition transform hover:scale-105 
+      flex items-center gap-2 shadow-lg text-center w-full sm:w-auto"
           >
             <Users /> Register
           </Link>
-          <Link 
-            to="/courses" 
+          <Link
+            to="/courses"
             className="border-2 border-indigo-600 text-indigo-600 
-            px-6 py-3 rounded-lg hover:bg-indigo-50 
-            flex items-center gap-2 transition transform hover:scale-105"
+      px-6 py-3 rounded-lg hover:bg-indigo-50 
+      flex items-center gap-2 transition transform hover:scale-105 
+      text-center w-full sm:w-auto"
           >
             <Code /> View Courses
           </Link>
-          <Link 
-            to="/all-pro-courses" 
+          <Link
+            to="/all-pro-courses"
             className="border-2 border-indigo-600 text-indigo-600 
-            px-6 py-3 rounded-lg hover:bg-indigo-50 
-            flex items-center gap-2 transition transform hover:scale-105"
+      px-6 py-3 rounded-lg hover:bg-indigo-50 
+      flex items-center gap-2 transition transform hover:scale-105 
+      text-center w-full sm:w-auto"
           >
             <Code /> Professional Courses
           </Link>
         </div>
-        
+
+
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
             <Terminal className="text-indigo-600 w-12 h-12 mb-4 mx-auto" />
@@ -55,7 +58,7 @@ const HomePage = () => {
               Cutting-edge programming courses covering latest technologies
             </p>
           </div>
-          
+
           <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
             <BookOpen className="text-green-600 w-12 h-12 mb-4 mx-auto" />
             <h3 className="text-xl font-semibold mb-3">Expert Instructors</h3>
@@ -63,7 +66,7 @@ const HomePage = () => {
               Learn from industry professionals with real-world experience
             </p>
           </div>
-          
+
           <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
             <Star className="text-yellow-600 w-12 h-12 mb-4 mx-auto" />
             <h3 className="text-xl font-semibold mb-3">Hands-on Learning</h3>

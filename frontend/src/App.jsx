@@ -10,6 +10,8 @@ import FinancialAidPage from './pages/FinancialAidPage';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import EnrollmentForm from './pages/EnrollmentForm';
+import ClassroomSession from './pages/ClassroomSession';
+import ClassroomAccess from './pages/ClassroomAccess';
 
 function App() {
   return (
@@ -26,6 +28,20 @@ function App() {
           <>
             <Navbar />
             <RegistrationPage /> 
+            <Footer />
+          </>
+        } />
+        <Route path="/classroom/session" element={
+          <>
+            <Navbar />
+            <ClassroomSession /> 
+            <Footer />
+          </>
+        } />
+        <Route path="/classroom-access" element={
+          <>
+            <Navbar />
+            <ClassroomAccess /> 
             <Footer />
           </>
         } />
