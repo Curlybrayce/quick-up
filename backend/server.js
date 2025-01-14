@@ -47,32 +47,32 @@ app.get('/session/:sessionId', (req, res) => {
 });
 
 // This will be removed later on. it's just to keep render free platform awake
-const startTime = new Date();
-app.get('/health', async (req, res) => {
-  try {
-      const healthData = {
-          status: 'healthy',
-          uptime: process.uptime(),
-          timestamp: new Date(),
-          serviceStarted: startTime
-      };
+// const startTime = new Date();
+// app.get('/health', async (req, res) => {
+//   try {
+//       const healthData = {
+//           status: 'healthy',
+//           uptime: process.uptime(),
+//           timestamp: new Date(),
+//           serviceStarted: startTime
+//       };
 
-      // Memory usage information (optional)
-      healthData.memory = {
-          used: process.memoryUsage().heapUsed / 1024 / 1024,
-          total: process.memoryUsage().heapTotal / 1024 / 1024
-      };
+//       // Memory usage information (optional)
+//       healthData.memory = {
+//           used: process.memoryUsage().heapUsed / 1024 / 1024,
+//           total: process.memoryUsage().heapTotal / 1024 / 1024
+//       };
 
-      // If everything is OK, send 200
-      res.status(200).json(healthData);
-  } catch (error) {
-      // If there's an error, send 500
-      res.status(500).json({
-          status: 'unhealthy',
-          error: error.message
-      });
-  }
-});
+//       // If everything is OK, send 200
+//       res.status(200).json(healthData);
+//   } catch (error) {
+//       // If there's an error, send 500
+//       res.status(500).json({
+//           status: 'unhealthy',
+//           error: error.message
+//       });
+//   }
+// });
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {
@@ -80,5 +80,5 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
