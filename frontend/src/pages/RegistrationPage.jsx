@@ -15,12 +15,12 @@ const RegistrationPage = () => {
   });
 
   const courseInterests = [
-    'Web Development', 
-    'Mobile App Development', 
-    'Data Science', 
+    'Web Development',
+    'Mobile App Development',
+    'Data Science',
     // 'Machine Learning', 
     'Cybersecurity',
-    
+
     // Web Development
     'HTML & CSS for Beginners',
     'JavaScript Basics',
@@ -42,7 +42,7 @@ const RegistrationPage = () => {
     // 'GraphQL with Apollo',
     // 'Serverless Architecture with AWS Lambda',
     // 'Building Microservices with Node.js',
-  
+
     // Mobile App Development
     'Introduction to Mobile App Development',
     // 'Flutter for Beginners',
@@ -60,7 +60,7 @@ const RegistrationPage = () => {
     'App Store Optimization (ASO)',
     'Advanced iOS Features (Core Data, SwiftUI, etc.)',
     'Android Advanced Topics (Kotlin Coroutines, Jetpack Compose, etc.)',
-  
+
     // Data Science
     'Introduction to Data Science',
     'Python for Data Science',
@@ -82,7 +82,7 @@ const RegistrationPage = () => {
     // 'Data Ethics and Privacy',
     // 'Data Science in Healthcare',
     // 'Reinforcement Learning',
-  
+
     // Machine Learning
     // 'Introduction to Machine Learning',
     // 'Supervised Learning: Regression & Classification',
@@ -104,7 +104,7 @@ const RegistrationPage = () => {
     // 'Deploying ML Models to Production',
     // 'ML for Computer Vision',
     // 'ML for Audio and Speech Recognition',
-  
+
     // Cybersecurity
     'Introduction to Cybersecurity',
     'Network Security Basics',
@@ -126,9 +126,9 @@ const RegistrationPage = () => {
     // 'Blockchain Security',
     // 'Cyber Threat Intelligence',
     'Ethical Hacking with Kali Linux',
-  
+
     // Programming Languages
-  
+
     // Python
     'Python for Beginners',
     'Advanced Python Programming',
@@ -139,7 +139,7 @@ const RegistrationPage = () => {
     // 'Deep Learning with Python',
     // 'Python for Networking and Security',
     // 'Python for Game Development',
-  
+
     // JavaScript
     'JavaScript Fundamentals',
     'Advanced JavaScript (ES6 and beyond)',
@@ -149,7 +149,7 @@ const RegistrationPage = () => {
     'JavaScript Design Patterns',
     'Testing JavaScript Applications',
     'JavaScript Frameworks (React.js, Angular, Vue.js)',
-  
+
     // Java
     'Java for Beginners',
     'Object-Oriented Programming with Java',
@@ -157,7 +157,7 @@ const RegistrationPage = () => {
     'Advanced Java Concepts (Streams, Lambdas, etc.)',
     'Java and Spring Boot for Backend Development',
     'Concurrency and Multithreading in Java',
-  
+
     // C/C++
     'C Programming for Beginners',
     // 'Advanced C Programming',
@@ -166,20 +166,20 @@ const RegistrationPage = () => {
     'Systems Programming in C',
     'C++ Design Patterns',
     'Low-Level Programming with C',
-  
+
     // Ruby
     // 'Ruby for Beginners',
     // 'Building Web Apps with Ruby on Rails',
     // 'Ruby for Test-Driven Development (TDD)',
     // 'Ruby and Database Management',
-  
+
     // Go (Golang)
     // 'Go Programming for Beginners',
     // 'Concurrency in Go',
     // 'Building Web Applications with Go',
     // 'Go for Microservices',
     // 'Advanced Go Techniques',
-  
+
     // Algorithms & Data Structures
     'Introduction to Algorithms',
     'Sorting Algorithms (Merge Sort, Quick Sort, etc.)',
@@ -199,7 +199,7 @@ const RegistrationPage = () => {
     // 'Parallel Algorithms',
     // 'Algorithms for Big Data',
     // 'Approximation Algorithms',
-  
+
     // Cloud Computing & DevOps
     // 'Introduction to Cloud Computing',
     // 'AWS Fundamentals',
@@ -216,7 +216,7 @@ const RegistrationPage = () => {
     // 'Serverless Computing with AWS Lambda',
     // 'Monitoring and Logging in Cloud Environments',
     // 'Building Scalable Applications on the Cloud',
-  
+
     // // Artificial Intelligence & Robotics
     'Introduction to AI',
     'AI for Problem Solving',
@@ -229,7 +229,7 @@ const RegistrationPage = () => {
     // 'Ethical AI and Bias Mitigation',
     // 'AI for Healthcare',
     // 'Swarm Robotics',
-  
+
     // // Blockchain & Cryptocurrencies
     // 'Blockchain Basics',
     // 'Ethereum and Smart Contracts',
@@ -242,7 +242,7 @@ const RegistrationPage = () => {
     // 'Blockchain Development with Hyperledger',
     // 'Blockchain for Finance and Supply Chain'
   ];
-  
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -316,7 +316,7 @@ const RegistrationPage = () => {
 
     } catch (error) {
       console.error('Registration error:', error);
-      
+
       // Handle specific error cases
       if (error.response) {
         alert(error.response.data.message || 'Registration failed');
@@ -332,12 +332,12 @@ const RegistrationPage = () => {
         <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">
           Join Tutourly Tech Class
         </h2>
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
-            <input 
-              type="text" 
+            <input
+              type="text"
               name="name"
               placeholder="Full Name"
               value={formData.name}
@@ -346,11 +346,11 @@ const RegistrationPage = () => {
               required
             />
           </div>
-          
+
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
-            <input 
-              type="email" 
+            <input
+              type="email"
               name="email"
               placeholder="Email Address"
               value={formData.email}
@@ -359,11 +359,11 @@ const RegistrationPage = () => {
               required
             />
           </div>
-          
+
           <div className="relative">
             <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500" />
-            <input 
-              type="password" 
+            <input
+              type="password"
               name="password"
               placeholder="Password"
               value={formData.password}
@@ -372,34 +372,35 @@ const RegistrationPage = () => {
               required
             />
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold text-purple-700 mb-4">
               Select Your Interests
             </h3>
             <div className="grid grid-cols-2 gap-3">
-              {courseInterests.map(interest => (
+              {courseInterests.map((interest, index) => (
                 <button
-                  key={interest}
+                  key={`${interest}-${index}`}
                   type="button"
                   onClick={() => handleInterestToggle(interest)}
                   className={`
                     flex items-center justify-center py-2 rounded-lg 
                     transition-all duration-300 
-                    ${formData.interests.includes(interest) 
-                      ? 'bg-purple-600 text-white' 
-                      : 'bg-purple-100 text-purple-800'}
+                    ${formData.interests.includes(interest)
+                                    ? 'bg-purple-600 text-white'
+                                    : 'bg-purple-100 text-purple-800'}
                   `}
                 >
                   {formData.interests.includes(interest) && <Check className="mr-2" />}
                   {interest}
                 </button>
               ))}
+
             </div>
           </div>
-          
-          <button 
-            type="submit" 
+
+          <button
+            type="submit"
             className="w-full bg-purple-700 text-white py-3 rounded-lg 
             hover:bg-purple-800 transition transform hover:scale-105 
             flex items-center justify-center"
